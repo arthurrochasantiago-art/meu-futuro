@@ -1,0 +1,648 @@
+/* ==========================================================================
+   PALETA DE CORES: THIAGO FRITZ & ELIZABETH WEBBER (ORDEM PARANORMAL)
+   ========================================================================== */
+:root {
+  /* Tons principais do Thiago Fritz (Sobretudo bege, couro escuro, luz âmbar) */
+  --bg-dark: #13100e;
+  --bg-surface: #1d1815;
+  --bg-card: #241e1a;
+  --thiago-trench: #c8b087;     /* Bege clássico do sobretudo */
+  --thiago-amber: #e09f3e;      /* Luz quente de luminária / flash */
+  --thiago-olive: #4b5343;      /* Verde musgo investigativo */
+  --ordem-teal: #2a7b76;        /* Detalhe sutil do Outro Lado / Ordo Realitas */
+
+  /* Tons adicionais da Elizabeth Webber (Seção 3 - Parceria & Família) */
+  --liz-burgundy: #8c2739;      /* Bordô característico da Liz */
+  --liz-crimson: #b83b50;       /* Destaque elegante */
+  --liz-slate: #3d4f5f;         /* Tom analítico / científico */
+
+  /* Tipografia e textos */
+  --text-main: #efe8da;
+  --text-muted: #b0a390;
+  --border-subtle: rgba(200, 176, 135, 0.22);
+
+  --font-title: 'Special Elite', 'Courier Prime', monospace;
+  --font-mono: 'Courier Prime', monospace;
+  --font-body: 'Inter', sans-serif;
+}
+
+/* Reset e Base */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background-color: var(--bg-dark);
+  color: var(--text-main);
+  font-family: var(--font-body);
+  line-height: 1.65;
+  overflow-x: hidden;
+  /* Textura sutil de papel envelhecido / grão de filme */
+  background-image: radial-gradient(rgba(200, 176, 135, 0.06) 1px, transparent 0);
+  background-size: 24px 24px;
+}
+
+.container {
+  width: 90%;
+  max-width: 1060px;
+  margin: 0 auto;
+}
+
+/* Flash da Câmera */
+.camera-flash {
+  position: fixed;
+  inset: 0;
+  background: #fffdf8;
+  opacity: 0;
+  pointer-events: none;
+  z-index: 9999;
+  transition: opacity 0.45s ease-out;
+}
+
+.camera-flash.active {
+  opacity: 0.85;
+  transition: none;
+}
+
+/* ==========================================================================
+   NAVEGAÇÃO
+   ========================================================================== */
+.navbar {
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 1rem;
+  padding: 0.9rem 5%;
+  background: rgba(19, 16, 14, 0.92);
+  backdrop-filter: blur(8px);
+  border-bottom: 1px solid var(--border-subtle);
+}
+
+.nav-brand {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  font-family: var(--font-mono);
+  font-size: 0.85rem;
+  color: var(--thiago-trench);
+  letter-spacing: 0.06em;
+}
+
+.badge-dot {
+  width: 9px;
+  height: 9px;
+  border-radius: 50%;
+  background-color: var(--thiago-amber);
+  box-shadow: 0 0 8px var(--thiago-amber);
+}
+
+.nav-links {
+  display: flex;
+  list-style: none;
+  gap: 1.5rem;
+}
+
+.nav-links a {
+  text-decoration: none;
+  color: var(--text-muted);
+  font-size: 0.9rem;
+  font-weight: 600;
+  transition: color 0.25s;
+}
+
+.nav-links a:hover {
+  color: var(--thiago-amber);
+}
+
+.btn-investigador {
+  background: transparent;
+  border: 1px solid var(--thiago-trench);
+  color: var(--thiago-trench);
+  font-family: var(--font-mono);
+  font-size: 0.82rem;
+  padding: 0.45rem 0.9rem;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: all 0.25s ease;
+}
+
+.btn-investigador:hover,
+.btn-investigador.active {
+  background: var(--thiago-amber);
+  border-color: var(--thiago-amber);
+  color: var(--bg-dark);
+  font-weight: 700;
+}
+
+/* ==========================================================================
+   HERO / CABEÇALHO (ESTÉTICA THIAGO FRITZ)
+   ========================================================================== */
+.hero {
+  position: relative;
+  padding: 5.5rem 0 4.5rem;
+  border-bottom: 1px solid var(--border-subtle);
+  background: linear-gradient(160deg, #1c1612 0%, #13100e 55%, #1c221d 100%);
+  text-align: center;
+}
+
+.dossier-stamp {
+  display: inline-block;
+  font-family: var(--font-mono);
+  font-size: 0.8rem;
+  letter-spacing: 0.14em;
+  color: var(--thiago-amber);
+  border: 1px dashed var(--thiago-amber);
+  padding: 0.35rem 0.9rem;
+  margin-bottom: 1.2rem;
+  border-radius: 3px;
+}
+
+.main-title {
+  font-family: var(--font-title);
+  font-size: clamp(2.3rem, 5vw, 3.8rem);
+  color: var(--thiago-trench);
+  letter-spacing: 0.03em;
+  margin-bottom: 1rem;
+  text-shadow: 0 4px 18px rgba(0, 0, 0, 0.6);
+}
+
+.subtitle {
+  max-width: 680px;
+  margin: 0 auto 2rem;
+  font-family: var(--font-mono);
+  font-size: 1.05rem;
+  color: var(--text-muted);
+}
+
+.hero-actions {
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+  flex-wrap: wrap;
+  margin-bottom: 2.5rem;
+}
+
+.btn-primary {
+  background: var(--thiago-amber);
+  color: var(--bg-dark);
+  text-decoration: none;
+  font-weight: 700;
+  padding: 0.75rem 1.5rem;
+  border-radius: 5px;
+  border: none;
+  cursor: pointer;
+  font-family: var(--font-body);
+  font-size: 0.95rem;
+  transition: transform 0.2s, background 0.2s;
+}
+
+.btn-primary:hover {
+  background: #ebb055;
+  transform: translateY(-2px);
+}
+
+.btn-secondary {
+  background: var(--bg-card);
+  color: var(--thiago-trench);
+  border: 1px solid var(--thiago-trench);
+  padding: 0.75rem 1.4rem;
+  border-radius: 5px;
+  cursor: pointer;
+  font-family: var(--font-mono);
+  font-size: 0.9rem;
+  transition: all 0.2s;
+}
+
+.btn-secondary:hover {
+  background: rgba(200, 176, 135, 0.14);
+}
+
+.thiago-desk-items {
+  display: flex;
+  justify-content: center;
+  gap: 0.8rem;
+  flex-wrap: wrap;
+}
+
+.desk-tag {
+  background: rgba(36, 30, 26, 0.85);
+  border: 1px solid var(--border-subtle);
+  padding: 0.35rem 0.85rem;
+  border-radius: 20px;
+  font-size: 0.82rem;
+  color: var(--text-muted);
+}
+
+/* ==========================================================================
+   LINHA DO TEMPO E DOSSIÊS
+   ========================================================================== */
+.timeline {
+  position: relative;
+  padding: 4rem 0 2rem;
+}
+
+.timeline-line {
+  position: absolute;
+  left: 24px;
+  top: 4rem;
+  bottom: 2rem;
+  width: 2px;
+  background: linear-gradient(
+    to bottom,
+    var(--thiago-trench) 0%,
+    var(--thiago-amber) 55%,
+    var(--liz-burgundy) 100%
+  );
+  opacity: 0.45;
+}
+
+.timeline-section {
+  position: relative;
+  padding-left: 68px;
+  margin-bottom: 4.5rem;
+}
+
+.timeline-marker {
+  position: absolute;
+  left: 4px;
+  top: 0;
+  width: 42px;
+  height: 42px;
+  border-radius: 50%;
+  background: var(--bg-card);
+  border: 2px solid var(--thiago-amber);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: var(--font-mono);
+  font-weight: 700;
+  color: var(--thiago-amber);
+  box-shadow: 0 0 14px rgba(224, 159, 62, 0.25);
+}
+
+/* Card Estilo Pasta de Investigação */
+.dossier-card {
+  position: relative;
+  background: var(--bg-card);
+  border: 1px solid var(--border-subtle);
+  border-left: 5px solid var(--thiago-trench);
+  border-radius: 8px;
+  padding: 2.2rem;
+  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.45);
+}
+
+/* Fitas adesivas decorativas estilo mural de investigação */
+.tape {
+  position: absolute;
+  width: 85px;
+  height: 22px;
+  background: rgba(200, 176, 135, 0.22);
+  border-left: 1px dashed rgba(255, 255, 255, 0.15);
+  border-right: 1px dashed rgba(255, 255, 255, 0.15);
+  pointer-events: none;
+}
+
+.tape-top-left {
+  top: -10px;
+  left: 22px;
+  transform: rotate(-4deg);
+}
+
+.tape-top-right {
+  top: -10px;
+  right: 22px;
+  transform: rotate(3deg);
+}
+
+.tape-bottom-right {
+  bottom: -10px;
+  right: 28px;
+  transform: rotate(-3deg);
+}
+
+.card-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 0.6rem;
+  padding-bottom: 1rem;
+  margin-bottom: 1.5rem;
+  border-bottom: 1px dashed var(--border-subtle);
+}
+
+.time-badge {
+  background: rgba(224, 159, 62, 0.16);
+  color: var(--thiago-amber);
+  font-family: var(--font-mono);
+  font-weight: 700;
+  font-size: 0.82rem;
+  padding: 0.3rem 0.75rem;
+  border-radius: 4px;
+}
+
+.file-code {
+  font-family: var(--font-mono);
+  font-size: 0.8rem;
+  color: var(--text-muted);
+}
+
+.card-grid {
+  display: grid;
+  grid-template-columns: 1.45fr 1fr;
+  gap: 2rem;
+  align-items: center;
+}
+
+.card-text h2 {
+  font-family: var(--font-title);
+  font-size: 1.6rem;
+  color: var(--thiago-trench);
+  margin-bottom: 1rem;
+  line-height: 1.3;
+}
+
+.card-text p {
+  color: var(--text-main);
+  margin-bottom: 1rem;
+  font-size: 0.98rem;
+}
+
+.milestone-list {
+  list-style: none;
+  margin-top: 1.2rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.55rem;
+}
+
+.milestone-list li {
+  background: rgba(19, 16, 14, 0.55);
+  padding: 0.6rem 0.9rem;
+  border-radius: 5px;
+  border-left: 3px solid var(--thiago-olive);
+  font-size: 0.92rem;
+}
+
+/* Nota Oculta (Lente de Investigação) */
+.secret-note {
+  display: none;
+  margin-top: 1.3rem;
+  padding: 0.95rem 1.1rem;
+  background: rgba(42, 123, 118, 0.14);
+  border: 1px dashed var(--ordem-teal);
+  border-radius: 6px;
+  font-family: var(--font-mono);
+  font-size: 0.88rem;
+  color: #bce3df;
+  animation: fadeIn 0.4s ease;
+}
+
+body.investigador-ativo .secret-note {
+  display: block;
+}
+
+/* Polaroid Decorativa */
+.polaroid {
+  background: #ede6d8;
+  color: #1c1614;
+  padding: 0.9rem 0.9rem 1.2rem;
+  border-radius: 4px;
+  box-shadow: 0 10px 24px rgba(0, 0, 0, 0.55);
+  transform: rotate(1.5deg);
+  transition: transform 0.3s ease;
+}
+
+.polaroid:hover {
+  transform: rotate(0deg) scale(1.02);
+}
+
+.polaroid-art {
+  position: relative;
+  height: 185px;
+  border-radius: 2px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(135deg, #241e1a, #3a3027);
+  overflow: hidden;
+}
+
+.icon-svg {
+  width: 96px;
+  height: 96px;
+}
+
+.stamp-overlay {
+  margin-top: 0.4rem;
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  letter-spacing: 0.12em;
+  color: var(--thiago-amber);
+  border: 1px solid var(--thiago-amber);
+  padding: 0.15rem 0.5rem;
+}
+
+.polaroid-caption {
+  margin-top: 0.75rem;
+  font-family: var(--font-mono);
+  font-size: 0.82rem;
+  font-weight: 700;
+  text-align: center;
+  color: #2c221e;
+}
+
+/* ==========================================================================
+   SEÇÃO 3: TEMA DUPLO THIAGO FRITZ + ELIZABETH WEBBER (FAMÍLIA)
+   ========================================================================== */
+.duo-marker {
+  border-color: var(--liz-crimson);
+  color: var(--liz-crimson);
+  box-shadow: 0 0 16px rgba(184, 59, 80, 0.35);
+}
+
+.duo-card {
+  background: linear-gradient(145deg, #241e1a 0%, #26181d 60%, #1d2228 100%);
+  border-left: 5px solid var(--liz-burgundy);
+  border-right: 5px solid var(--thiago-trench);
+}
+
+.duo-badge {
+  background: rgba(140, 39, 57, 0.25);
+  color: #f3a6b4;
+}
+
+.duo-banner {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 0.6rem;
+  background: rgba(19, 16, 14, 0.65);
+  border: 1px solid rgba(184, 59, 80, 0.35);
+  padding: 0.65rem 1rem;
+  border-radius: 6px;
+  margin-bottom: 1.4rem;
+  font-family: var(--font-mono);
+  font-size: 0.88rem;
+  color: var(--thiago-trench);
+}
+
+.duo-plus {
+  color: var(--liz-crimson);
+  font-weight: 700;
+}
+
+.duo-sub {
+  color: var(--text-muted);
+  font-size: 0.82rem;
+}
+
+.duo-list li {
+  border-left-color: var(--liz-burgundy);
+}
+
+.duo-art {
+  background: linear-gradient(135deg, #2c221e 0%, #4d1924 55%, #24323d 100%);
+}
+
+.duo-stamp {
+  color: #f3a6b4;
+  border-color: #f3a6b4;
+}
+
+.duo-secret-note {
+  background: rgba(140, 39, 57, 0.2);
+  border-color: var(--liz-crimson);
+  color: #f8d4dc;
+}
+
+/* ==========================================================================
+   WIDGET INTERATIVO DE RPG
+   ========================================================================== */
+.rpg-widget-section {
+  margin-bottom: 4rem;
+}
+
+.rpg-box {
+  background: var(--bg-surface);
+  border: 1px solid var(--thiago-trench);
+  border-radius: 8px;
+  padding: 1.8rem 2rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 1.5rem;
+}
+
+.rpg-info h3 {
+  font-family: var(--font-title);
+  color: var(--thiago-amber);
+  margin-bottom: 0.35rem;
+}
+
+.rpg-info p {
+  color: var(--text-muted);
+  font-size: 0.92rem;
+}
+
+.rpg-controls {
+  display: flex;
+  align-items: center;
+  gap: 1.2rem;
+  flex-wrap: wrap;
+}
+
+.dice-result {
+  display: flex;
+  align-items: center;
+  gap: 0.8rem;
+  background: var(--bg-dark);
+  border: 1px dashed var(--thiago-amber);
+  padding: 0.55rem 1rem;
+  border-radius: 6px;
+  min-width: 240px;
+}
+
+.dice-number {
+  font-family: var(--font-mono);
+  font-size: 1.4rem;
+  font-weight: 700;
+  color: var(--thiago-amber);
+}
+
+.dice-message {
+  font-size: 0.85rem;
+  color: var(--text-main);
+}
+
+/* ==========================================================================
+   RODAPÉ E ANIMAÇÕES
+   ========================================================================== */
+.footer {
+  border-top: 1px solid var(--border-subtle);
+  padding: 2rem 0;
+  text-align: center;
+  font-size: 0.9rem;
+  color: var(--thiago-trench);
+}
+
+.footer-sub {
+  font-family: var(--font-mono);
+  font-size: 0.8rem;
+  color: var(--text-muted);
+  margin-top: 0.3rem;
+}
+
+.reveal {
+  opacity: 0;
+  transform: translateY(24px);
+  transition: opacity 0.65s ease, transform 0.65s ease;
+}
+
+.reveal.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(-4px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* Responsividade */
+@media (max-width: 780px) {
+  .card-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .timeline-line {
+    left: 16px;
+  }
+
+  .timeline-section {
+    padding-left: 48px;
+  }
+
+  .timeline-marker {
+    left: 0;
+    width: 34px;
+    height: 34px;
+    font-size: 0.85rem;
+  }
+
+  .dossier-card {
+    padding: 1.5rem;
+  }
+}
